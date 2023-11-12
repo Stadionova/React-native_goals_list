@@ -1,7 +1,18 @@
 // import {StatusBar} from 'expo-status-bar';
 import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
+import {useState} from "react";
 
 export default function App() {
+    const [inputText, setInputText] = useState('')
+
+    function fetchInputChanges(inputText) {
+        setInputText(inputText)
+    }
+
+    function catchBtnClicks() {
+        console.log(inputText)
+    }
+
     return (
         <View style={styles.appContainer}>
             <View style={styles.titleWrapper}>
@@ -13,11 +24,11 @@ export default function App() {
                 </View>
             </View>
             <View style={styles.content}>
-                <TextInput placeholder={'write your real name or nickname'}/>
+                <TextInput onChangeText={fetchInputChanges} placeholder={'write your real name or nickname'}/>
             </View>
             <View>
                 <View style={styles.footer}>
-                    <Button title={'CLICK TO GET GOAL FOR A DAY'}/>
+                    <Button onPress={catchBtnClicks} title={'CLICK TO GET GOAL FOR A DAY'}/>
                 </View>
                 <View style={styles.footer}>
                     <Button title={'OK'}/>
@@ -38,6 +49,7 @@ const styles = StyleSheet.create({
     titleWrapper: {
         // flexDirection: 'row',
         flexDirection: 'column',
+        alignItems: 'flex-end',
         // justifyContent: 'space-between',
         paddingBottom: 8
     },
