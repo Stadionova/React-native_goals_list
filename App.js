@@ -4,13 +4,17 @@ import {useState} from "react";
 
 export default function App() {
     const [inputText, setInputText] = useState('')
+    const [goalsList, setGoalsList] = useState([])
 
     function fetchInputChanges(inputText) {
         setInputText(inputText)
     }
 
-    function catchBtnClicks() {
-        console.log(inputText)
+    // делать так плохая практика
+    // когда новый стэйт основан на предыдущем
+    function addGoal() {
+        // setGoalsList([...goalsList, inputText])
+        setGoalsList(currentGoal => [...currentGoal, inputText])
     }
 
     return (
@@ -28,11 +32,14 @@ export default function App() {
             </View>
             <View>
                 <View style={styles.footer}>
-                    <Button onPress={catchBtnClicks} title={'CLICK TO GET GOAL FOR A DAY'}/>
+                    <Button onPress={addGoal} title={'CLICK TO GET GOAL FOR A DAY'}/>
                 </View>
                 <View style={styles.footer}>
                     <Button title={'OK'}/>
                 </View>
+            </View>
+            <View style={styles.goalsListWrapper}>
+                {goalsList.map((goal, index) => <Text key={index} style={styles.goal}>{goal}</Text>)}
             </View>
         </View>
     );
