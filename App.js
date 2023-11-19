@@ -39,7 +39,11 @@ export default function App() {
                 </View>
             </View>
             <View style={styles.goalsListWrapper}>
-                {goalsList.map((goal, index) => <Text key={index} style={styles.goal}>{goal}</Text>)}
+                {goalsList.map((goal, index) => (
+                    <View key={index} style={styles.goal}>
+                        <Text style={styles.goalText}>{goal}</Text>
+                    </View>
+                ))}
             </View>
         </View>
     );
@@ -83,6 +87,10 @@ const styles = StyleSheet.create({
         padding: 8,
         backgroundColor: 'pink',
         textDecorationColor: 'white',
-        marginBottom: 20
+        marginBottom: 20,
+        borderRadius: 10
+    },
+    goalText: {
+        color: 'red'
     }
 });
