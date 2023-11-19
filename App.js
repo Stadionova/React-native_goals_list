@@ -6,13 +6,13 @@ export default function App() {
     const [inputText, setInputText] = useState('')
     const [goalsList, setGoalsList] = useState([])
 
-    function fetchInputChanges(inputText) {
+    const fetchInputChanges = (inputText) => {
         setInputText(inputText)
     }
 
     // делать так плохая практика
     // когда новый стэйт основан на предыдущем
-    function addGoal() {
+    const addGoal = () => {
         // setGoalsList([...goalsList, inputText])
         setGoalsList(currentGoal => [...currentGoal, inputText])
     }
@@ -46,6 +46,18 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+    goalsListWrapper: {
+        borderColor: 'red',
+        borderWidth: 1,
+        padding: 20
+    },
+    goal: {
+        marginBottom: 10,
+        borderBottomColor: 'black',
+        borderWidth: 1,
+        padding: 5,
+        borderRadius: 10
+    },
     appContainer: {
         flex: 1,
         // flexDirection: 'row',
