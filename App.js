@@ -1,5 +1,5 @@
 // import {StatusBar} from 'expo-status-bar';
-import {Button, StyleSheet, Text, TextInput, View, ScrollView} from 'react-native';
+import {Button, StyleSheet, Text, TextInput, View, FlatList} from 'react-native';
 import {useState} from "react";
 
 export default function App() {
@@ -38,21 +38,14 @@ export default function App() {
                     <Button title={'OK'}/>
                 </View>
             </View>
-            {/*<View style={styles.goalsListWrapper}>*/}
-            {/*    {goalsList.map((goal, index) => (*/}
-            {/*        <View key={index} style={styles.goal}>*/}
-            {/*            <Text style={styles.goalText}>{goal}</Text>*/}
-            {/*        </View>*/}
-            {/*    ))}*/}
-            {/*</View>*/}
             <View style={styles.goalsListWrapper}>
-                <ScrollView alwaysBounceVertical={false}>
-                    {goalsList.map((goal, index) => (
-                        <View key={index} style={styles.goal}>
-                            <Text style={styles.goalText}>{goal}</Text>
+                <FlatList data={goalsList} renderItem={goal => {
+                    return (
+                        <View style={styles.goal}>
+                            <Text style={styles.goalText}>{goal.item}</Text>
                         </View>
-                    ))}
-                </ScrollView>
+                    )
+                }} alwaysBounceVertical={false}/>
             </View>
         </View>
     );
@@ -63,7 +56,8 @@ const styles = StyleSheet.create({
         borderColor: 'red',
         borderWidth: 1,
         padding: 20,
-        height: 220
+        height: 220,
+        width: 200
     },
     goal: {
         marginBottom: 10,
