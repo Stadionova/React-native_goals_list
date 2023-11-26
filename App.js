@@ -1,6 +1,10 @@
 // import {StatusBar} from 'expo-status-bar';
-import {Button, StyleSheet, Text, TextInput, View, FlatList} from 'react-native';
 import {useState} from "react";
+
+import {GoalsList} from "./components/GoalsList";
+import {Input} from "./components/Input";
+import {Title} from "./components/Title";
+import {Button, StyleSheet, View} from 'react-native';
 
 export default function App() {
     const [inputText, setInputText] = useState('')
@@ -20,16 +24,10 @@ export default function App() {
     return (
         <View style={styles.appContainer}>
             <View style={styles.titleWrapper}>
-                <View style={{marginLeft: 20, marginRight: 10}}>
-                    <Text style={styles.text}>KING FOR A DAY</Text>
-                </View>
-                <View style={styles.title}>
-                    <Text style={styles.text}>BE READY TO REACH YOUR GOAL</Text>
-                </View>
+                <Title styles={{marginLeft: 20, marginRight: 10}} text='KING FOR A DAY'/>
+                <Title styles={styles.title} text='BE READY TO REACH YOUR GOAL'/>
             </View>
-            <View style={styles.content}>
-                <TextInput onChangeText={fetchInputChanges} placeholder={'write your real name or nickname'}/>
-            </View>
+            <Input fetchInputChanges={fetchInputChanges}/>
             <View>
                 <View style={styles.footer}>
                     <Button onPress={addGoal} title={'CLICK TO GET GOAL FOR A DAY'}/>
@@ -38,34 +36,12 @@ export default function App() {
                     <Button title={'OK'}/>
                 </View>
             </View>
-            <View style={styles.goalsListWrapper}>
-                <FlatList data={goalsList} renderItem={goal => {
-                    return (
-                        <View style={styles.goal}>
-                            <Text style={styles.goalText}>{goal.item}</Text>
-                        </View>
-                    )
-                }} alwaysBounceVertical={false}/>
-            </View>
+            <GoalsList goalsList={goalsList}/>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    goalsListWrapper: {
-        borderColor: 'red',
-        borderWidth: 1,
-        padding: 20,
-        height: 220,
-        width: 200
-    },
-    goal: {
-        marginBottom: 10,
-        borderBottomColor: 'black',
-        borderWidth: 1,
-        padding: 5,
-        borderRadius: 10
-    },
     appContainer: {
         flex: 1,
         // flexDirection: 'row',
@@ -80,10 +56,6 @@ const styles = StyleSheet.create({
         // justifyContent: 'space-between',
         paddingBottom: 8
     },
-    content: {
-        marginLeft: 20,
-        marginBottom: 16
-    },
     footer: {
         marginLeft: 20,
         borderColor: 'blue',
@@ -93,8 +65,5 @@ const styles = StyleSheet.create({
         textDecorationColor: 'white',
         marginBottom: 20,
         borderRadius: 10
-    },
-    goalText: {
-        color: 'red'
     }
 });
