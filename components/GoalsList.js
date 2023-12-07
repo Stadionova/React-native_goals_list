@@ -2,10 +2,10 @@ import {FlatList, StyleSheet, View} from "react-native";
 
 import {Goal} from "./Goal";
 
-export const GoalsList = ({goalsList}) => {
+export const GoalsList = (props) => {
     return (
         <View style={styles.goalsListWrapper}>
-            <FlatList data={goalsList}
+            <FlatList data={props.goalsList}
                       renderItem={goal => <Goal value={goal.item}/>}
                       alwaysBounceVertical={false}
             />

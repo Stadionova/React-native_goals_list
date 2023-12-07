@@ -4,19 +4,14 @@ import {useState} from "react";
 import {GoalsList} from "./components/GoalsList";
 import {Input} from "./components/Input";
 import {Title} from "./components/Title";
-import {Button, StyleSheet, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 export default function App() {
-    const [inputText, setInputText] = useState('')
     const [goalsList, setGoalsList] = useState([])
-
-    const fetchInputChanges = (inputText) => {
-        setInputText(inputText)
-    }
 
     // делать так плохая практика
     // когда новый стэйт основан на предыдущем
-    const addGoal = () => {
+    const addGoal = (inputText) => {
         // setGoalsList([...goalsList, inputText])
         setGoalsList(currentGoal => [...currentGoal, inputText])
     }
@@ -27,15 +22,7 @@ export default function App() {
                 <Title styles={{marginLeft: 20, marginRight: 10}} text='KING FOR A DAY'/>
                 <Title styles={styles.title} text='BE READY TO REACH YOUR GOAL'/>
             </View>
-            <Input fetchInputChanges={fetchInputChanges}/>
-            <View>
-                <View style={styles.footer}>
-                    <Button onPress={addGoal} title={'CLICK TO GET GOAL FOR A DAY'}/>
-                </View>
-                <View style={styles.footer}>
-                    <Button title={'OK'}/>
-                </View>
-            </View>
+            <Input addGoal={addGoal}/>
             <GoalsList goalsList={goalsList}/>
         </View>
     );
