@@ -16,6 +16,10 @@ export default function App() {
         setGoalsList(currentGoal => [...currentGoal, inputText])
     }
 
+    const deleteGoal = (goalId) => {
+        setGoalsList(goalsList.filter((goal, index) => goalId !== index))
+    }
+
     return (
         <View style={styles.appContainer}>
             <View style={styles.titleWrapper}>
@@ -23,7 +27,7 @@ export default function App() {
                 <Title styles={styles.title} text='BE READY TO REACH YOUR GOAL'/>
             </View>
             <Input addGoal={addGoal}/>
-            <GoalsList goalsList={goalsList}/>
+            <GoalsList deleteGoal={deleteGoal} goalsList={goalsList}/>
         </View>
     );
 }

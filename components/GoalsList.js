@@ -6,7 +6,7 @@ export const GoalsList = (props) => {
     return (
         <View style={styles.goalsListWrapper}>
             <FlatList data={props.goalsList}
-                      renderItem={goal => <Goal value={goal.item}/>}
+                      renderItem={goal => <Goal goal={goal} deleteGoal={props.deleteGoal} value={goal.item}/>}
                       alwaysBounceVertical={false}
             />
         </View>
