@@ -4,10 +4,15 @@ import {useState} from "react";
 import {GoalsList} from "./components/GoalsList";
 import {Input} from "./components/Input";
 import {Title} from "./components/Title";
-import {StyleSheet, View} from 'react-native';
+import {Button, StyleSheet, View} from 'react-native';
 
 export default function App() {
     const [goalsList, setGoalsList] = useState([])
+    const [isModalVisible, setIsModalVisible] = useState(false)
+
+    const showModalBtnHandler = () => {
+        setIsModalVisible(true)
+    }
 
     // делать так плохая практика
     // когда новый стэйт основан на предыдущем
@@ -22,11 +27,12 @@ export default function App() {
 
     return (
         <View style={styles.appContainer}>
+            <Button title='OPEN MODAL' color='red' onPress={showModalBtnHandler}/>
             <View style={styles.titleWrapper}>
                 <Title styles={{marginLeft: 20, marginRight: 10}} text='KING FOR A DAY'/>
                 <Title styles={styles.title} text='BE READY TO REACH YOUR GOAL'/>
             </View>
-            <Input addGoal={addGoal}/>
+            <Input visible={isModalVisible} addGoal={addGoal}/>
             <GoalsList deleteGoal={deleteGoal} goalsList={goalsList}/>
         </View>
     );
