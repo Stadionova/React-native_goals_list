@@ -13,6 +13,9 @@ export default function App() {
     const showModalBtnHandler = () => {
         setIsModalVisible(true)
     }
+    const closeModalBtnHandler = () => {
+        setIsModalVisible(false)
+    }
 
     // делать так плохая практика
     // когда новый стэйт основан на предыдущем
@@ -32,7 +35,7 @@ export default function App() {
                 <Title styles={{marginLeft: 20, marginRight: 10}} text='KING FOR A DAY'/>
                 <Title styles={styles.title} text='BE READY TO REACH YOUR GOAL'/>
             </View>
-            <Input visible={isModalVisible} addGoal={addGoal}/>
+            <Input visible={isModalVisible} addGoal={addGoal} closeModal={closeModalBtnHandler}/>
             <GoalsList deleteGoal={deleteGoal} goalsList={goalsList}/>
         </View>
     );

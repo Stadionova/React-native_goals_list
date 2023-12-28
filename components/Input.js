@@ -14,10 +14,13 @@ export const Input = (props) => {
         <Modal visible={props.visible} animaionType='slide'>
             <View style={styles.content}>
                 <TextInput onChangeText={fetchInputChanges}
-                           placeholder={'write your real name or nickname'}
+                           placeholder={'type your goal'}
                            value={inputText}
                 />
-                <Button onPress={addGoalHandler} title={'CLICK TO GET GOAL FOR A DAY'}/>
+                <View style={styles.btnsWrapper}>
+                    <Button onPress={addGoalHandler} title={'ADD GOAL'}/>
+                    <Button onPress={props.closeModal} title={'CANCEL'}/>
+                </View>
             </View>
         </Modal>
     )
@@ -32,4 +35,9 @@ const styles = StyleSheet.create({
         marginTop: 300,
         zIndex: 1000000000
     },
+    btnsWrapper: {
+        // flex: 1,
+        justifyContent: 'center',
+        flexDirection: 'row',
+    }
 });
