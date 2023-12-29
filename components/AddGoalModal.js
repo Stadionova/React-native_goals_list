@@ -1,7 +1,7 @@
-import {Button, StyleSheet, TextInput, View, Modal} from "react-native";
+import {Button, StyleSheet, TextInput, View, Modal, Image} from "react-native";
 import {useState} from "react";
 
-export const Input = (props) => {
+export const AddGoalModal = (props) => {
     const [inputText, setInputText] = useState('')
     const fetchInputChanges = (inputText) => {
         setInputText(inputText)
@@ -12,6 +12,7 @@ export const Input = (props) => {
     }
     return (
         <Modal visible={props.visible} animaionType='slide'>
+            <Image style={styles.image} source={require('../assets/images/favicon.png')}/>
             <View style={styles.content}>
                 <TextInput onChangeText={fetchInputChanges}
                            placeholder={'type your goal'}
@@ -27,6 +28,14 @@ export const Input = (props) => {
 }
 
 const styles = StyleSheet.create({
+    image: {
+        width: 100,
+        height: 100,
+        margin: 20,
+        position:"absolute",
+        top: 160,
+        left: 120
+    },
     content: {
         marginLeft: 20,
         marginBottom: 16,
