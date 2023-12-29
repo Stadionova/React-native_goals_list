@@ -31,11 +31,11 @@ export default function App() {
 
     return (
         <View style={styles.appContainer}>
-            <Button title='OPEN MODAL' color='red' onPress={showModalBtnHandler}/>
             <View style={styles.titleWrapper}>
                 <Title styles={{marginLeft: 20, marginRight: 10}} text='KING FOR A DAY'/>
                 <Title styles={styles.title} text='BE READY TO REACH YOUR GOAL'/>
             </View>
+            <Button title='OPEN MODAL' color='red' onPress={showModalBtnHandler}/>
             <AddGoalModal visible={isModalVisible} addGoal={addGoal} closeModal={closeModalBtnHandler}/>
             <GoalsList deleteGoal={deleteGoal} goalsList={goalsList}/>
         </View>
@@ -46,23 +46,24 @@ const styles = StyleSheet.create({
     appContainer: {
         flex: 1,
         // flexDirection: 'row',
-        backgroundColor: 'pink',
+        // backgroundColor: 'pink',
         alignItems: 'center',
         justifyContent: 'center',
     },
     titleWrapper: {
         // flexDirection: 'row',
         flexDirection: 'column',
-        alignItems: 'flex-end',
+        alignItems: 'center',
         // justifyContent: 'space-between',
-        paddingBottom: 8
+        paddingBottom: 8,
+        marginBottom: 10
     },
     footer: {
         marginLeft: 20,
         borderColor: 'blue',
         borderWidth: 2,
         padding: 8,
-        backgroundColor: 'pink',
+        // backgroundColor: 'pink',
         textDecorationColor: 'white',
         marginBottom: 20,
         borderRadius: 10

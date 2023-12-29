@@ -17,10 +17,11 @@ export const AddGoalModal = (props) => {
                 <TextInput onChangeText={fetchInputChanges}
                            placeholder={'type your goal'}
                            value={inputText}
+                           style={styles.input}
                 />
                 <View style={styles.btnsWrapper}>
-                    <Button onPress={addGoalHandler} title={'ADD GOAL'}/>
-                    <Button onPress={props.closeModal} title={'CANCEL'}/>
+                    <Button color='red' onPress={addGoalHandler} title={'ADD GOAL'}/>
+                    <Button color='blue' onPress={props.closeModal} title={'CANCEL'}/>
                 </View>
             </View>
         </Modal>
@@ -32,17 +33,22 @@ const styles = StyleSheet.create({
         width: 100,
         height: 100,
         margin: 20,
-        position:"absolute",
+        position: "absolute",
         top: 160,
         left: 120
     },
-    content: {
+    input: {
+        borderColor: 'red',
+        borderWidth: 1,
         marginLeft: 20,
+        marginRight: 20,
+        marginBottom: 10,
+        padding: 5,
+        borderRadius: 10
+    },
+    content: {
         marginBottom: 16,
-        // position: 'absolute',
-        // top: 0, bottom: 0
-        marginTop: 300,
-        zIndex: 1000000000
+        marginTop: 300
     },
     btnsWrapper: {
         // flex: 1,
