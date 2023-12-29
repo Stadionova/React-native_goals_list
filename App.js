@@ -22,6 +22,7 @@ export default function App() {
     const addGoal = (inputText) => {
         // setGoalsList([...goalsList, inputText])
         setGoalsList(currentGoal => [...currentGoal, inputText])
+        closeModalBtnHandler()
     }
 
     const deleteGoal = (goalId) => {
